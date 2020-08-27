@@ -1,0 +1,77 @@
+.team-content-section .social-links-menu{
+  @for $i from 1 through 5 {
+    li:nth-of-type(#{$i}) {
+      @include transition(0.5s ease-in (0.1s + ($i - 1) * 0.1s));
+    }
+  }
+}
+
+.team-content-section .social-links-menu{
+  @for $j from 1 through 5 {
+    li:nth-of-type(#{$j}) {
+      @include transform (translateX((-100px + ($j - 1) * -50px)));
+    }
+  }
+}
+
+______++++++++++__________  MIXINS
+
+@mixin translateX ($x) {
+	@include transform(translateX($x));
+}
+
+@mixin media( $res ) {
+	@if mobile == $res {
+		@media only screen and (min-width: $mobile_width) {
+			@content;
+		}
+	}
+
+	@if mobile_horizontal == $res {
+		@media only screen and (min-width: $mobile_horizontal) {
+			@content;
+		}
+	}
+
+	@if tablet == $res {
+		@media only screen and (min-width: $tablet_width) {
+			@content;
+		}
+	}
+
+	@if desktop == $res {
+		@media only screen and (min-width: $desktop_width) {
+			@content;
+		}
+	}
+
+	@if landscape == $res {
+		@media only screen and (min-width: $landscape_width) {
+			@content;
+		}
+	}
+
+	@if wide == $res {
+		@media only screen and (min-width: $wide_width) {
+			@content;
+		}
+	}
+
+	@if large == $res {
+		@media only screen and (min-width: $large_screen) {
+			@content;
+		}
+	}
+
+	@if diagonal == $res {
+		@media only screen and (min-width: $diagonal_screen) {
+			@content;
+		}
+	}
+
+	@if ultra_wide == $res {
+		@media only screen and (min-width: $ultra_wide_screen) {
+			@content;
+		}
+	}
+}
