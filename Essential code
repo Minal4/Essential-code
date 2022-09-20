@@ -75,3 +75,27 @@ ______++++++++++__________  MIXINS
 		}
 	}
 }
+
+/**** extract image thumbnail from youtube video *****/
+
+var iframe = document.querySelector(".video-section iframe");
+let iframe_src = document.querySelector("iframe").getAttribute("src");
+var videoSection = document.querySelector(".video-section");
+console.log(videoSection, "section");
+var youtube_video_id = iframe_src
+  .match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/)
+  .pop();
+
+if (youtube_video_id.length == 11) {
+  var video_thumbnail = document.createElement("img");
+  video_thumbnail.setAttribute(
+    "src",
+    // "//img.youtube.com/vi/' + youtube_video_id + '/0.jpg"
+    `https://youtube.com/embed/${youtube_video_id}?feature=oembed.jpg`
+  );
+  console.log(video_thumbnail, "nail");
+  // <img src="//img.youtube.com/vi/' + youtube_video_id + '/0.jpg" />;
+  console.log(video_thumbnail, "nail");
+  // videoSection.appendChild(video_thumbnail);
+  videoSection.append(video_thumbnail);
+}
